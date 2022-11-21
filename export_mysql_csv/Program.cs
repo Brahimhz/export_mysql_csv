@@ -5,7 +5,7 @@ using System.Data;
 
 
 Console.WriteLine("Hello, World!");
-
+/*
 DataTable dataTable = new DataTable();
 
 string connString = @"server=localhost;uid=root;pwd=1234;database=world";
@@ -23,5 +23,15 @@ conn.Close();
 da.Dispose();
 
 CSVUtlity.ToCSV(dataTable, @"C:\Temp\test.csv");
+*/
+
+List<Product> products = new List<Product>();
+products.Add(new Product { Name = "Name1", Country = "Country1", Description = "Description1", Price = 1, LaunchDate = DateTime.Now });
+products.Add(new Product { Name = "Name2", Country = "Country2", Description = "Description2", Price = 2, LaunchDate = DateTime.Now });
+products.Add(new Product { Name = "Name3", Country = "Country3", Description = "Description3", Price = 3, LaunchDate = DateTime.Now });
+products.Add(new Product { Name = "Name4", Country = "Country4", Description = "Description4", Price = 4, LaunchDate = DateTime.Now });
+products.Add(new Product { Name = "Name5", Country = "Country5", Description = "Description5", Price = 5, LaunchDate = DateTime.Now });
+
+CSVUtlity.ObjectToCSV<Product>(products);
 
 Console.ReadLine();

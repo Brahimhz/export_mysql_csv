@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LINQtoCSV;
 
 namespace export_mysql_csv
 {
@@ -22,7 +23,7 @@ namespace export_mysql_csv
                 }
             }
             sw.Write(sw.NewLine);
-            foreach (DataRow dr in dtDataTable.Rows)
+            foreach (System.Data.DataRow dr in dtDataTable.Rows)
             {
                 for (int i = 0; i < dtDataTable.Columns.Count; i++)
                 {
@@ -47,6 +48,22 @@ namespace export_mysql_csv
                 sw.Write(sw.NewLine);
             }
             sw.Close();
+        }
+
+        public static void ObjectToCSV<T>(IEnumerable<T> objectItems)
+        {
+            CsvFileDescription outputFileDescription = new CsvFileDescription
+            {
+                SeparatorChar = ',',
+                FirstLineHasColumnNames = true
+            };
+            CsvContext cc = new CsvContext();
+
+            cc.Write(
+                objectItems,
+                "products2.csv",
+                outputFileDescription);
+
         }
     }
 }
