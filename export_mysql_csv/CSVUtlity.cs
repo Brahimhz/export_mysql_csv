@@ -63,7 +63,6 @@ namespace export_mysql_csv
                 objectItems,
                 "products2.csv",
                 outputFileDescription);
-
         }
     }
 }
